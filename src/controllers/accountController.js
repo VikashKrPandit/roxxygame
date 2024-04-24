@@ -215,7 +215,7 @@ const verifyCode = async (req, res) => {
 
     const [rows] = await connection.query('SELECT * FROM users WHERE `phone` = ?', [phone]);
     if (rows.length == 0) {
-        await request(`https://www.fast2sms.com/dev/bulkV2?authorization=7M0qbcuFWVsKBP9hA5XYUHGEOwyn2Z13gf6viDJ4RkdQSToNxajZMVAEnmX9aK3vP1lWzOJHDTdihNRe&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
+        await request(`https://www.fast2sms.com/dev/bulkV2?authorization=7M0qbcuFWVsKBP9hA5XYUHGEOwyn2Z13gf6viDJ4RkdQSToNxajZMVAEnmX9aK3vP1lWzOJHDTdihNReww&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
             let data = JSON.parse(body);
             console.log(data.message);
             if (data.message == 'SMS sent successfully.') {
