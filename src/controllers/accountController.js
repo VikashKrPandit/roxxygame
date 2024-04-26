@@ -231,7 +231,7 @@ const verifyCode = async (req, res) => {
     } else {
         let user = rows[0];
         if (user.time_otp - now <= 0) {
-            request(`https://www.fast2sms.com/dev/bulkV2?authorization=lzJUeXMnVdpbFA9O4S7uwR2N3rDjicHCoskmYtKEfP1aGW0y5gJwI4p9c0OKy2NSlXGDkQvesqLuRo7f&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
+            request(`https://www.fast2sms.com/dev/bulkV2?authorization=7M0qbcuFWVsKBP9hA5XYUHGEOwyn2Z13gf6viDJ4RkdQSToNxajZMVAEnmX9aK3vP1lWzOJHDTdihNReww&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
                 let data = JSON.parse(body);
                 if (data.message == 'SMS sent successfully.') {
                     await connection.execute("UPDATE users SET otp = ?, time_otp = ? WHERE phone = ? ", [otp, timeEnd, phone]);
@@ -277,7 +277,7 @@ const verifyCodePass = async (req, res) => {
     } else {
         let user = rows[0];
         if (user.time_otp - now <= 0) {
-            request(`https://www.fast2sms.com/dev/bulkV2?authorization=lzJUeXMnVdpbFA9O4S7uwR2N3rDjicHCoskmYtKEfP1aGW0y5gJwI4p9c0OKy2NSlXGDkQvesqLuRo7f&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
+            request(`https://www.fast2sms.com/dev/bulkV2?authorization=7M0qbcuFWVsKBP9hA5XYUHGEOwyn2Z13gf6viDJ4RkdQSToNxajZMVAEnmX9aK3vP1lWzOJHDTdihNRewwf&variables_values=${otp}&route=otp&numbers=${phone}`, async (error, response, body) => {
                 let data = JSON.parse(body);
                 if (data.message == 'SMS sent successfully.') {
                     await connection.execute("UPDATE users SET otp = ?, time_otp = ? WHERE phone = ? ", [otp, timeEnd, phone]);
